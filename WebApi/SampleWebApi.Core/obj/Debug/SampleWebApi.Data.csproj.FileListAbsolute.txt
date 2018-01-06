@@ -1,0 +1,11 @@
+C:\Users\Santosh\Documents\Repos\SampleWebApi\SampleWebApi.Data\obj\Debug\SampleWebApi.Data.csprojResolveAssemblyReference.cache
+C:\Users\Santosh\Documents\Repos\SampleWebApi\SampleWebApi.Data\obj\Debug\SampleWebApi.Data.csproj.CoreCompileInputs.cache
+C:\Users\Santosh\Documents\Repos\SampleWebApi\SampleWebApi.Data\bin\Debug\SampleWebApi.Data.dll.config
+C:\Users\Santosh\Documents\Repos\SampleWebApi\SampleWebApi.Data\bin\Debug\SampleWebApi.Data.dll
+C:\Users\Santosh\Documents\Repos\SampleWebApi\SampleWebApi.Data\bin\Debug\SampleWebApi.Data.pdb
+C:\Users\Santosh\Documents\Repos\SampleWebApi\SampleWebApi.Data\bin\Debug\EntityFramework.dll
+C:\Users\Santosh\Documents\Repos\SampleWebApi\SampleWebApi.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Santosh\Documents\Repos\SampleWebApi\SampleWebApi.Data\bin\Debug\EntityFramework.xml
+C:\Users\Santosh\Documents\Repos\SampleWebApi\SampleWebApi.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Santosh\Documents\Repos\SampleWebApi\SampleWebApi.Data\obj\Debug\SampleWebApi.Data.dll
+C:\Users\Santosh\Documents\Repos\SampleWebApi\SampleWebApi.Data\obj\Debug\SampleWebApi.Data.pdb
