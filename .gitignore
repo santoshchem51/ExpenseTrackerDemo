@@ -3,3 +3,5 @@ SampleWebApi/bin/
 SampleWebApi/obj/
 WebApi/SampleWebApi/obj/
 WebApi/SampleWebApi/bin/
+WebApi/.vs/
+WebApi/packages/

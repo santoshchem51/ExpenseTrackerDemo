@@ -134,7 +134,7 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SampleWebApi.Data\SampleWebApi.Core.csproj">
+    <ProjectReference Include="..\SampleWebApi.Core\SampleWebApi.Core.csproj">
       <Project>{d96f83a1-f76c-4de1-a19c-6c557dc2468d}</Project>
       <Name>SampleWebApi.Core</Name>
     </ProjectReference>
