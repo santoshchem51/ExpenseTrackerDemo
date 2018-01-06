@@ -4,6 +4,7 @@ using SampleWebApi.Core.Interfaces;
 using SampleWebApi.Core.Models;
 using SampleWebApi.Core.UnitOfWork;
 using SampleWebApi.Data.Helpers;
+using SampleWebApi.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -110,12 +111,18 @@ namespace SampleWebApi.Controllers
         }
 
 
-        [Route("expensegroups/{expenseGroupId}/expenses/{id}")]
-        [Route("expenses/{id}")]
-        public IHttpActionResult Get(int id, int? expenseGroupId = null)
+        [VersionedRoute("expensegroups/{expenseGroupId}/expenses/{id}", 1)]
+        [VersionedRoute("expenses/{id}", 1)]
+        public IHttpActionResult Get(int id, int? expenseGroupId = null, string fields = null)
         {
             try
             {
+                List<string> lstOfFields = new List<string>();
+
+                if (fields != null)
+                {
+                    lstOfFields = fields.ToLower().Split(',').ToList();
+                }
                 ExpenseDto expense = null;
 
                 if (expenseGroupId == null)
@@ -135,7 +142,7 @@ namespace SampleWebApi.Controllers
 
                 if (expense != null)
                 {
-                    return Ok(expense);
+                    return Ok(DataShapingHelper<ExpenseDto>.CreateDataShapedObject(expense,lstOfFields));
                 }
                 else
                 {
@@ -148,6 +155,54 @@ namespace SampleWebApi.Controllers
                 return InternalServerError();
             }
         }
+
+        [VersionedRoute("expensegroups/{expenseGroupId}/expenses/{id}", 2)]
+        [VersionedRoute("expenses/{id}", 2)]
+        public IHttpActionResult GetV2(int id, int? expenseGroupId = null, string fields = null)
+        {
+            try
+            {
+                List<string> lstOfFields = new List<string>();
+
+                if (fields != null)
+                {
+                    lstOfFields = fields.ToLower().Split(',').ToList();
+                }
+
+                ExpenseDto expense = null;
+
+                if (expenseGroupId == null)
+                {
+                    expense = _expenseUnitOfWork.GetExpense(id);
+                }
+                else
+                {
+                    var expensesForGroup = _expenseUnitOfWork.GetExpenses((int)expenseGroupId);
+
+                    // if the group doesn't exist, we shouldn't try to get the expenses
+                    if (expensesForGroup != null)
+                    {
+                        expense = expensesForGroup.FirstOrDefault(eg => eg.Id == id);
+                    }
+                }
+
+                if (expense != null)
+                {
+                    var returnValue = DataShapingHelper<ExpenseDto>.CreateDataShapedObject(expense, lstOfFields);
+                    return Ok(returnValue);
+                }
+                else
+                {
+                    return NotFound();
+                }
+
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
 
 
         [Route("expenses/{id}")]
