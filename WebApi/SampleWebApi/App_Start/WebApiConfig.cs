@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Serialization;
+using Swashbuckle.Application;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,9 @@ namespace SampleWebApi
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver // converts returned json element properties to camel case.
                 = new CamelCasePropertyNamesContractResolver();
 
+
+            // register swagger
+            config.EnableSwagger(c => c.SingleApiVersion("v1", "Expense Tracker Api")).EnableSwaggerUi();
             return config;
         }
     }

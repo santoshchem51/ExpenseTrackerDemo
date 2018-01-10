@@ -101,7 +101,8 @@ namespace SampleWebApi.Controllers
                     .ApplySort(sort)
                     .Skip(pageSize * (page - 1))
                     .Take(pageSize)
-                    .ToList());
+                    .ToList()
+                    .Select(exp=> DataShapingHelper<ExpenseDto>.CreateDataShapedObject(exp,lstOfFields)));
 
             }
             catch (Exception)

@@ -12,7 +12,8 @@ namespace SampleWebApi
     {
         public void Configuration(IAppBuilder app)
         {
-            app.UseWebApi(WebApiConfig.Register());
+            app.UseWebApi(WebApiConfig.Register());  
+            
         }
 
     }
